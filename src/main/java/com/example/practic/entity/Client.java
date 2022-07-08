@@ -1,14 +1,14 @@
 package com.example.practic.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.example.practic.models.RegModel;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "client")
 public class Client {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_client", nullable = false)
     private Integer id;
 
@@ -29,6 +29,20 @@ public class Client {
 
     @Column(name = "clpassword", nullable = false, length = 64)
     private String clpassword;
+
+    public Client(RegModel regModel)
+    {
+        namecl = regModel.getName();
+        family = regModel.getFamily();
+        patronymic = regModel.getPatronymic();
+        phone = regModel.getPhone();
+        email = regModel.getEmail();
+        clpassword = regModel.getClpassword();
+    };
+
+    public Client() {
+
+    }
 
     public Integer getId() {
         return id;

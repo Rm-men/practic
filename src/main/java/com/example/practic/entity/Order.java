@@ -1,20 +1,28 @@
 package com.example.practic.entity;
 
+import com.example.practic.models.NewOrderModel;
+import com.example.practic.repository.ClientRepository;
+import com.example.practic.repository.OrderRepository;
+import com.example.practic.repository.PhoneRepository;
 import org.hibernate.annotations.Type;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.Date;
 
 @Entity
 @Table(name = "orders")
 public class Order {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_order", nullable = false)
     private Integer id;
 
     @Column(name = "dateord")
-    private Instant dateord;
+    private Date dateord;
 
     @Column(name = "phonenumber")
     @Type(type = "org.hibernate.type.TextType")
@@ -32,7 +40,7 @@ public class Order {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_phone")
-    private Phone idPhone;
+    private PhoneModel idPhone;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_order_status")
@@ -59,6 +67,20 @@ public class Order {
     @Column(name = "payed")
     private Boolean payed;
 
+    public Order (){
+
+    }
+    public Order (NewOrderModel newOrderModel){
+        phonenumber = newOrderModel.getPhonenumber();
+        descriptionord = newOrderModel.getDescriptionord();
+        address = newOrderModel.getAddress();
+        dateord = new Date();
+        priceord = BigDecimal.valueOf(0);
+        idMaster = 0;
+        // idPhone = newOrderModel.getIdPhoneModel();
+        // idClient = clientRepository.getById(newOrderModel.getIdClient());
+    }
+
     public Integer getId() {
         return id;
     }
@@ -67,11 +89,11 @@ public class Order {
         this.id = id;
     }
 
-    public Instant getDateord() {
+    public Date getDateord() {
         return dateord;
     }
 
-    public void setDateord(Instant dateord) {
+    public void setDateord(Date dateord) {
         this.dateord = dateord;
     }
 
@@ -107,11 +129,11 @@ public class Order {
         this.idMaster = idMaster;
     }
 
-    public Phone getIdPhone() {
+    public PhoneModel getIdPhone() {
         return idPhone;
     }
 
-    public void setIdPhone(Phone idPhone) {
+    public void setIdPhone(PhoneModel idPhone) {
         this.idPhone = idPhone;
     }
 
