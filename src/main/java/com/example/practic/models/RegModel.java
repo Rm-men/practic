@@ -10,6 +10,18 @@ public class RegModel {
     private String phone;
     private String clpassword;
 
+    public  RegModel(){
+
+    }
+    public  RegModel(String family, String name, String patronymic, String email, String phone, String clpassword){
+        this.family = family;
+        this.name = name;
+        this.patronymic = patronymic;
+        this.email = email;
+        this.phone = phone;
+        this.clpassword = clpassword;
+    }
+
     public String getEmail() {
         return email;
     }

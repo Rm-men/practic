@@ -6,13 +6,11 @@ public class RegAnswerModel {
     private Boolean email;
     private Boolean phone;
     private Boolean clpassword;
-    private Boolean allFieldIn;
-    private Boolean userIsExist;
+    private Boolean userIsNotExist;
     private Boolean regComplete;
 
-    public boolean Truly(){
-        allFieldIn = family&name&email&phone&clpassword;
-        return allFieldIn;
+    public boolean AllFielldFilled(){
+        return family&name&email&phone&clpassword;
     }
     public RegAnswerModel (){
         family = false;
@@ -20,8 +18,8 @@ public class RegAnswerModel {
         email = false;
         phone = false;
         clpassword = false;
-        allFieldIn = false;
         regComplete = false;
+        // userIsNotExist = false;
     }
     public Boolean getFamily() {
         return family;
@@ -63,12 +61,13 @@ public class RegAnswerModel {
         this.clpassword = clpassword;
     }
 
-    public Boolean getUserIsExist() {
-        return userIsExist;
+    public Boolean getUserIsNotExist() {
+        return userIsNotExist;
     }
 
-    public void setUserIsExist(Boolean userIsExist) {
-        this.userIsExist = userIsExist;
+    public void setUserIsNotExist(Boolean userIsNotExist) {
+        this.userIsNotExist = userIsNotExist;
+
     }
 
     public Boolean getRegComplete() {
@@ -76,6 +75,9 @@ public class RegAnswerModel {
     }
 
     public void setRegComplete() {
-        this.regComplete = true;
+        if (userIsNotExist == null)
+            this.regComplete = false;
+        else
+            this.regComplete = AllFielldFilled()&userIsNotExist;
     }
 }

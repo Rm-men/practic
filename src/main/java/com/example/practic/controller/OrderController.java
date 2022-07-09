@@ -2,7 +2,6 @@ package com.example.practic.controller;
 
 import com.example.practic.entity.Order;
 import com.example.practic.entity.StoryOrderMove;
-import com.example.practic.models.AuthModel;
 import com.example.practic.models.NewOrderModel;
 import com.example.practic.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ public class OrderController {
     @Autowired// инициализирует репозиторий при заходе в контроллер
     OrderService orderService;
     @PostMapping(path="/new_order", produces = MediaType.APPLICATION_JSON_VALUE)
-    public boolean LoginUser (@RequestBody @Validated NewOrderModel newOrderModel){ // названия важны
+    public boolean CreateNewOrder(@RequestBody @Validated NewOrderModel newOrderModel){ // названия важны
         return orderService.CreateNewOrder(newOrderModel);
     }
     @GetMapping(path="/get_order_for")

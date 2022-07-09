@@ -20,4 +20,12 @@ public class AuthModel {
     public void setClpassword(String clpassword) {
         this.clpassword = clpassword;
     }
+
+    public  AuthModel(String email, String password){
+        this.email = email;
+        this.clpassword = password;
+    }
+    public  AuthModel(){
+
+    }
 }
