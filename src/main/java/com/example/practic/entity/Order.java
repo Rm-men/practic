@@ -80,6 +80,29 @@ public class Order {
         // idPhone = newOrderModel.getIdPhoneModel();
         // idClient = clientRepository.getById(newOrderModel.getIdClient());
     }
+    public Order (NewOrderModel newOrderModel, Client client, PhoneModel phoneModel, Integer id){
+        this.id = id;
+        phonenumber = newOrderModel.getPhonenumber();
+        descriptionord = newOrderModel.getDescriptionord();
+        address = newOrderModel.getAddress();
+        dateord = new Date();
+        priceord = BigDecimal.valueOf(0);
+        idMaster = 0;
+        idPhone = phoneModel;
+        idClient = client;
+    }
+    public Boolean ValidCheck(){
+        return
+                phonenumber != null &
+                descriptionord != null &
+                address != null &
+                dateord != null &
+                priceord != null &
+                idMaster == 0 &
+                idPhone != null &
+                idClient != null &
+                idOrderStatus != null;
+    }
 
     public Integer getId() {
         return id;

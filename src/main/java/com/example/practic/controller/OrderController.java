@@ -28,9 +28,7 @@ public class OrderController {
     }
     @GetMapping(path="/get_order")
     public Order GetOrder (@RequestParam(value = "id") String id){
-        // orderService.UpdateOrder(Integer.valueOf(id));
         return orderService.GetOrder(Integer.valueOf(id));
-        // return orderService.GetOrder(59);
     }
     @GetMapping(path="/get_order_move")
     public List<StoryOrderMove> GetOrderMove (@RequestParam(value = "idorder") String idorder){

@@ -1,10 +1,8 @@
 package com.example.practic.controller;
 
-import com.example.practic.entity.Client;
 import com.example.practic.models.AuthModel;
 import com.example.practic.models.RegAnswerModel;
 import com.example.practic.models.RegModel;
-import com.example.practic.repository.ClientRepository;
 import com.example.practic.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

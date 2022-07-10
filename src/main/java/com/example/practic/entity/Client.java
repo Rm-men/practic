@@ -38,7 +38,17 @@ public class Client {
         phone = regModel.getPhone();
         email = regModel.getEmail();
         clpassword = regModel.getClpassword();
-    };
+    }
+    public Client(RegModel regModel, Integer id)
+    {
+        this.id = id;
+        namecl = regModel.getName();
+        family = regModel.getFamily();
+        patronymic = regModel.getPatronymic();
+        phone = regModel.getPhone();
+        email = regModel.getEmail();
+        clpassword = regModel.getClpassword();
+    }
 
     public Client() {
 

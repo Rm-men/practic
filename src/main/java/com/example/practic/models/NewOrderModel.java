@@ -9,6 +9,16 @@ public class NewOrderModel {
     public boolean Truly(){
         return (id_client != null & phonenumber != null & address != null & idPhoneModel != null &  descriptionord != null);
     }
+    public NewOrderModel (){
+
+    }
+    public NewOrderModel (Integer id_client, String phonenumber,  String address, Integer idPhoneModel, String descriptionord){
+        this.id_client = id_client;
+        this.phonenumber = phonenumber;
+        this.address = address;
+        this.idPhoneModel = idPhoneModel;
+        this.descriptionord = descriptionord;
+    }
     public Integer getIdClient() {
         return id_client;
     }

@@ -21,6 +21,15 @@ public class Guarantee {
     @Type(type = "org.hibernate.type.TextType")
     private String conditions;
 
+    public Guarantee(Integer id, Integer period, String conditions){
+        this.id = id;
+        this.period = period;
+        this.conditions = conditions;
+    }
+    public Guarantee(){
+
+    }
+
     public Integer getId() {
         return id;
     }

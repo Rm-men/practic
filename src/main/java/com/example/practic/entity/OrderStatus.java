@@ -21,6 +21,16 @@ public class OrderStatus {
     @Column(name = "logical_sequence", nullable = false)
     private Integer logicalSequence;
 
+    public OrderStatus(String id, String descriptionos,Integer logicalSequence ) {
+        this.id = id;
+        this.descriptionos = descriptionos;
+        this.logicalSequence = logicalSequence;
+    }
+
+    public OrderStatus() {
+
+    }
+
     public String getId() {
         return id;
     }

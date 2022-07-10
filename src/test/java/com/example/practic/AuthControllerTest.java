@@ -16,12 +16,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 class AuthControllerTest {
+
+    @InjectMocks
+    private ClientService clientService;
+    @Mock
+    private ClientRepository clientRepository;
+
     AuthModel authModel_FullTrue = new AuthModel("email", "clpassword");
     RegModel regModel_FullTrue = new RegModel( "family", "name",  "patronymic",  "email",  "phone",  "clpassword");
     AuthModel authModel_FullFail = new AuthModel("_email", "_clpassword");
@@ -31,20 +36,11 @@ class AuthControllerTest {
     Client clientTrue = new Client(regModel_FullTrue);
     Client clientFail = new Client(regModel_FullFail);
 
-    @InjectMocks
-    private ClientService clientService;
-    @Mock
-    private ClientRepository clientRepository;
-
-    @Test
-    void contextLoads() throws IllegalAccessException {
-    }
-
     @Test
     void authTest_FullTrue() { // +
         Mockito.doReturn (clientTrue)
                 .when(clientRepository)
-                         .getClientByEmailAndClpassword(clientTrue.getEmail(), clientTrue.getClpassword());
+                .getClientByEmailAndClpassword(clientTrue.getEmail(), clientTrue.getClpassword());
 
         assertTrue(clientService.LoginUser(authModel_FullTrue));
 
@@ -52,9 +48,6 @@ class AuthControllerTest {
     }
     @Test
     void authTest_FullFail(){ // ???
-        Mockito.doReturn (clientTrue)
-                .when(clientRepository)
-                .getClientByEmailAndClpassword(clientTrue.getEmail(), clientTrue.getClpassword());
 
         assertFalse(clientService.LoginUser(authModel_FullFail));
 

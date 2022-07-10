@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface ListWorkshopRepository extends JpaRepository<ListWorkshop, Integer> {
     List<ListWorkshop> findAll ();
-
+    ListWorkshop getListWorkshopByAddressAndType(String address, String type);
 }

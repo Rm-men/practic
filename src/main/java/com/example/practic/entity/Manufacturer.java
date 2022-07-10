@@ -15,6 +15,14 @@ public class Manufacturer {
     @Column(name = "name", nullable = false, length = 150)
     private String name;
 
+    public Manufacturer(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+    public Manufacturer() {
+
+    }
+
     public Integer getId() {
         return id;
     }

@@ -27,6 +27,18 @@ public class PhoneModel {
     @JoinColumn(name = "manufacturer")
     private Manufacturer manufacturer;
 
+    public PhoneModel(Integer id, String namephone, String specification, Guarantee guarantee, Manufacturer manufacturer) {
+        this.id = id;
+        this.namephone = namephone;
+        this.specifications = specification;
+        this.guarantee = guarantee;
+        this.manufacturer = manufacturer;
+    }
+
+    public PhoneModel() {
+
+    }
+
     public Integer getId() {
         return id;
     }

@@ -1,7 +1,6 @@
 package com.example.practic.controller;
 
 import com.example.practic.entity.PhoneModel;
-import com.example.practic.services.ClientService;
 import com.example.practic.services.PhonesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
