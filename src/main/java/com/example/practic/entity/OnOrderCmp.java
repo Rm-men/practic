@@ -10,12 +10,12 @@ public class OnOrderCmp {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_order_forcomp")
-    private Order idOrderForcomp;
+    @JoinColumn(name = "idOrder")
+    private Order idOrder;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_cmp_onlist")
-    private Component idCmpOnlist;
+    @JoinColumn(name = "idCmp")
+    private Component idCmp;
 
     public Integer getId() {
         return id;
@@ -25,20 +25,20 @@ public class OnOrderCmp {
         this.id = id;
     }
 
-    public Order getIdOrderForcomp() {
-        return idOrderForcomp;
+    public Order getIdOrder() {
+        return idOrder;
     }
 
-    public void setIdOrderForcomp(Order idOrderForcomp) {
-        this.idOrderForcomp = idOrderForcomp;
+    public void setIdOrder(Order idOrderForcomp) {
+        this.idOrder = idOrderForcomp;
     }
 
-    public Component getIdCmpOnlist() {
-        return idCmpOnlist;
+    public Component getIdCmp() {
+        return idCmp;
     }
 
-    public void setIdCmpOnlist(Component idCmpOnlist) {
-        this.idCmpOnlist = idCmpOnlist;
+    public void setIdCmp(Component idCmpOnlist) {
+        this.idCmp = idCmpOnlist;
     }
 
 }

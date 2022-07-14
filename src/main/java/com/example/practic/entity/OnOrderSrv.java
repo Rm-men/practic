@@ -10,12 +10,12 @@ public class OnOrderSrv {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_order_forservice")
-    private Order idOrderForservice;
+    @JoinColumn(name = "idOrder")
+    private Order idOrder;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_srv_onlist")
-    private ListSirvice idSrvOnlist;
+    @JoinColumn(name = "idSrv")
+    private Sirvice idSrv;
 
     public Integer getId() {
         return id;
@@ -25,20 +25,20 @@ public class OnOrderSrv {
         this.id = id;
     }
 
-    public Order getIdOrderForservice() {
-        return idOrderForservice;
+    public Order getIdOrder() {
+        return idOrder;
     }
 
-    public void setIdOrderForservice(Order idOrderForservice) {
-        this.idOrderForservice = idOrderForservice;
+    public void setIdOrder(Order idOrderForservice) {
+        this.idOrder = idOrderForservice;
     }
 
-    public ListSirvice getIdSrvOnlist() {
-        return idSrvOnlist;
+    public Sirvice getIdSrv() {
+        return idSrv;
     }
 
-    public void setIdSrvOnlist(ListSirvice idSrvOnlist) {
-        this.idSrvOnlist = idSrvOnlist;
+    public void setIdSrv(Sirvice idSrvOnlist) {
+        this.idSrv = idSrvOnlist;
     }
 
 }

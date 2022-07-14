@@ -5,19 +5,19 @@ public class RegAnswerModel {
     private Boolean name;
     private Boolean email;
     private Boolean phone;
-    private Boolean clpassword;
+    private Boolean password;
     private Boolean userIsNotExist;
     private Boolean regComplete;
 
     public boolean AllFielldFilled(){
-        return family&name&email&phone&clpassword;
+        return family & name & email & phone & password;
     }
     public RegAnswerModel (){
         family = false;
         name = false;
         email = false;
         phone = false;
-        clpassword = false;
+        password = false;
         regComplete = false;
         // userIsNotExist = false;
     }
@@ -53,12 +53,12 @@ public class RegAnswerModel {
         this.phone = phone;
     }
 
-    public Boolean getClpassword() {
-        return clpassword;
+    public Boolean getPassword() {
+        return password;
     }
 
-    public void setClpassword(Boolean clpassword) {
-        this.clpassword = clpassword;
+    public void setPassword(Boolean password) {
+        this.password = password;
     }
 
     public Boolean getUserIsNotExist() {

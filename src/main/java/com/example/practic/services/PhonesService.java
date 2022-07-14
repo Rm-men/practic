@@ -11,7 +11,7 @@ import java.util.List;
 public class PhonesService {
     @Autowired
     PhoneModelsRepository phoneModelsRepository;
-    public List<PhoneModel> GetModels() {
+    public List<PhoneModel> getModels() {
         return phoneModelsRepository.findAll();
     }
 }

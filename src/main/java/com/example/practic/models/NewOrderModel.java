@@ -1,38 +1,38 @@
 package com.example.practic.models;
 
 public class NewOrderModel {
-    private Integer id_client;
-    private String phonenumber;
+    private Integer idClient;
+    private String phoneNumber;
     private String address;
     private Integer idPhoneModel;
-    private String descriptionord;
+    private String descriptionOrd;
     public boolean Truly(){
-        return (id_client != null & phonenumber != null & address != null & idPhoneModel != null &  descriptionord != null);
+        return (idClient != null & phoneNumber != null & address != null & idPhoneModel != null &  descriptionOrd != null);
     }
     public NewOrderModel (){
 
     }
     public NewOrderModel (Integer id_client, String phonenumber,  String address, Integer idPhoneModel, String descriptionord){
-        this.id_client = id_client;
-        this.phonenumber = phonenumber;
+        this.idClient = id_client;
+        this.phoneNumber = phonenumber;
         this.address = address;
         this.idPhoneModel = idPhoneModel;
-        this.descriptionord = descriptionord;
+        this.descriptionOrd = descriptionord;
     }
     public Integer getIdClient() {
-        return id_client;
+        return idClient;
     }
 
-    public String getPhonenumber() {
-        return phonenumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public void setId_client(Integer id_client) {
-        this.id_client = id_client;
+    public void setIdClient(Integer idClient) {
+        this.idClient = idClient;
     }
 
     public String getAddress() {
@@ -51,11 +51,11 @@ public class NewOrderModel {
         this.idPhoneModel = idPhoneModel;
     }
 
-    public String getDescriptionord() {
-        return descriptionord;
+    public String getDescriptionOrd() {
+        return descriptionOrd;
     }
 
-    public void setDescriptionord(String descriptionord) {
-        this.descriptionord = descriptionord;
+    public void setDescriptionOrd(String descriptionOrd) {
+        this.descriptionOrd = descriptionOrd;
     }
 }

@@ -22,16 +22,16 @@ public class OrderService {
     @Autowired
     OrderStatusRepository orderStatusRepository;
     @Autowired
-    ListWorkshopRepository listWorkshopRepository;
+    WorkingAddressesRepository listWorkshopRepository;
     @Autowired
     StoryOrderMoveRepository storyOrderMoveRepository;
-    public List<Order> GetOrdersFor(Integer id_client) {
+    public List<Order> getOrdersFor(Integer id_client) {
         return orderRepository.getAllByIdClientId(id_client);
     }
-    public Order GetOrder(Integer id) {
+    public Order getOrder(Integer id) {
         return orderRepository.getOrderById(id);
     }
-    public Boolean OrderSetAgreement(Integer id, Boolean agree) {
+    public Boolean orderSetAgreement(Integer id, Boolean agree) {
         if (orderRepository.getOrderById(id) == null)
             return false;
         if (agree == null)
@@ -41,7 +41,7 @@ public class OrderService {
         orderRepository.save(order);
         return true;
     }
-    public Boolean OrderSetPayed(Integer id, Boolean pay) {
+    public Boolean orderSetPayed(Integer id, Boolean pay) {
         if (orderRepository.getOrderById(id) == null)
             return false;
         if (pay == null)
@@ -51,10 +51,10 @@ public class OrderService {
         orderRepository.save(order);
         return true;
     }
-    public List<StoryOrderMove> GetStoryOrderMove(Integer id) {
+    public List<StoryOrderMove> getStoryOrderMove(Integer id) {
         return storyOrderMoveRepository.getStoryOrderMovesByIdorderId(id);
     }
-    public Boolean CreateNewOrder(NewOrderModel newOrderModel) {
+    public Boolean createNewOrder(NewOrderModel newOrderModel) {
         try {
             if (newOrderModel.Truly())
             {
@@ -64,7 +64,7 @@ public class OrderService {
                 order.setIdOrderStatus(orderStatusRepository.getOrderStatusById("add_0"));
                 if (!order.ValidCheck())
                     return null;
-                orderRepository.save(order);
+                orderRepository.save(order); // возвражает заказ (без ид) или обшибка
                 return true;
             }
         }

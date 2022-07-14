@@ -18,11 +18,11 @@ public class AuthController {
     @Autowired// инициализирует репозиторий (может так то всё) при заходе в контроллер
     ClientService clientService;
     @PostMapping(path="/signin",produces = MediaType.APPLICATION_JSON_VALUE)
-    public boolean LoginUser (@RequestBody @Validated AuthModel authModel){ // названия важны
-        return clientService.LoginUser(authModel);
+    public boolean loginUser(@RequestBody @Validated AuthModel authModel){ // названия важны
+        return clientService.loginUser(authModel);
     }
     @PostMapping(path="/signon",produces = MediaType.APPLICATION_JSON_VALUE)
-    public RegAnswerModel RegisterUser (@RequestBody @Validated RegModel regModel) throws IllegalAccessException { // !!! добавить хэширование
-        return clientService.RegisterUser(regModel);
+    public RegAnswerModel registerUser(@RequestBody @Validated RegModel regModel){ // !!! добавить хэширование
+        return clientService.registerUser(regModel);
     }
 }

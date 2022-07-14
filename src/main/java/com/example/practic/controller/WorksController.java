@@ -14,7 +14,7 @@ public class WorksController {
     @Autowired// инициализирует репозиторий при заходе в контроллер
     WorkShopService workShopService;
     @GetMapping(path="/get_address")
-    public List<String> GetAddress (){ // названия важны
-        return workShopService.GetAddress();
+    public List<String> getAddress(){ // названия важны
+        return workShopService.getAddress();
     }
 }

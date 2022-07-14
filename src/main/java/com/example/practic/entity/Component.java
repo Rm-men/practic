@@ -10,22 +10,22 @@ public class Component {
     @Column(name = "id_component", nullable = false)
     private Integer id;
 
-    @Column(name = "typecmp", nullable = false, length = 20)
-    private String typecmp;
+    @Column(name = "type", nullable = false, length = 20)
+    private String type;
 
-    @Column(name = "namecmp", nullable = false, length = 40)
+    @Column(name = "name", nullable = false, length = 40)
     private String namecmp;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_guaranteecmp")
-    private Guarantee idGuaranteecmp;
+    @JoinColumn(name = "id_guarantee")
+    private Guarantee idGuarantee;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "manufacturercmp")
-    private Manufacturer manufacturercmp;
+    @JoinColumn(name = "manufacturer")
+    private Manufacturer manufacturer;
 
-    @Column(name = "pricecmp", precision = 12, scale = 2)
-    private BigDecimal pricecmp;
+    @Column(name = "price", precision = 12, scale = 2)
+    private BigDecimal price;
 
     @Column(name = "count")
     private Integer count;
@@ -38,12 +38,12 @@ public class Component {
         this.id = id;
     }
 
-    public String getTypecmp() {
-        return typecmp;
+    public String getType() {
+        return type;
     }
 
-    public void setTypecmp(String typecmp) {
-        this.typecmp = typecmp;
+    public void setType(String typecmp) {
+        this.type = typecmp;
     }
 
     public String getNamecmp() {
@@ -54,28 +54,28 @@ public class Component {
         this.namecmp = namecmp;
     }
 
-    public Guarantee getIdGuaranteecmp() {
-        return idGuaranteecmp;
+    public Guarantee getIdGuarantee() {
+        return idGuarantee;
     }
 
-    public void setIdGuaranteecmp(Guarantee idGuaranteecmp) {
-        this.idGuaranteecmp = idGuaranteecmp;
+    public void setIdGuarantee(Guarantee idGuaranteecmp) {
+        this.idGuarantee = idGuaranteecmp;
     }
 
-    public Manufacturer getManufacturercmp() {
-        return manufacturercmp;
+    public Manufacturer getManufacturer() {
+        return manufacturer;
     }
 
-    public void setManufacturercmp(Manufacturer manufacturercmp) {
-        this.manufacturercmp = manufacturercmp;
+    public void setManufacturer(Manufacturer manufacturercmp) {
+        this.manufacturer = manufacturercmp;
     }
 
-    public BigDecimal getPricecmp() {
-        return pricecmp;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setPricecmp(BigDecimal pricecmp) {
-        this.pricecmp = pricecmp;
+    public void setPrice(BigDecimal pricecmp) {
+        this.price = pricecmp;
     }
 
     public Integer getCount() {

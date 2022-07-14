@@ -17,31 +17,31 @@ public class OrderController {
     @Autowired// инициализирует репозиторий при заходе в контроллер
     OrderService orderService;
     @PostMapping(path="/new_order", produces = MediaType.APPLICATION_JSON_VALUE)
-    public boolean CreateNewOrder(@RequestBody @Validated NewOrderModel newOrderModel){ // названия важны
-        return orderService.CreateNewOrder(newOrderModel);
+    public boolean createNewOrder(@RequestBody @Validated NewOrderModel newOrderModel){ // названия важны
+        return orderService.createNewOrder(newOrderModel);
     }
     @GetMapping(path="/get_order_for")
-    public List<Order> GetOrdersFor (@RequestParam(value = "id_client") String id){
+    public List<Order> getOrdersFor(@RequestParam(value = "id_client") String id){
         Integer id_client = Integer.valueOf(id);
-        return orderService.GetOrdersFor(id_client);
+        return orderService.getOrdersFor(id_client);
         // return null;
     }
     @GetMapping(path="/get_order")
-    public Order GetOrder (@RequestParam(value = "id") String id){
-        return orderService.GetOrder(Integer.valueOf(id));
+    public Order getOrder(@RequestParam(value = "id") String id){
+        return orderService.getOrder(Integer.valueOf(id));
     }
     @GetMapping(path="/get_order_move")
-    public List<StoryOrderMove> GetOrderMove (@RequestParam(value = "idorder") String idorder){
-        return orderService.GetStoryOrderMove(Integer.valueOf(idorder));
+    public List<StoryOrderMove> getOrderMove(@RequestParam(value = "idorder") String idorder){
+        return orderService.getStoryOrderMove(Integer.valueOf(idorder));
     }
     @GetMapping(path="/set_agree")
-    public Boolean SetOrderAgreement (@RequestParam(value = "idorder") String idorder, @RequestParam(value = "agreement") Boolean agreement){
-        orderService.OrderSetAgreement(Integer.valueOf(idorder), agreement);
+    public Boolean setOrderAgreement(@RequestParam(value = "idorder") String idorder, @RequestParam(value = "agreement") Boolean agreement){
+        orderService.orderSetAgreement(Integer.valueOf(idorder), agreement);
         return true;
     }
     @GetMapping(path="/set_pay")
-    public Boolean SetOrderPayed (@RequestParam(value = "idorder") String idorder, @RequestParam(value = "payed") Boolean agreement){
-        orderService.OrderSetPayed(Integer.valueOf(idorder), agreement);
+    public Boolean setOrderPayed(@RequestParam(value = "idorder") String idorder, @RequestParam(value = "payed") Boolean agreement){
+        orderService.orderSetPayed(Integer.valueOf(idorder), agreement);
         return true;
     }
 }

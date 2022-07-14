@@ -13,7 +13,7 @@ public class PhonesController {
     @Autowired// инициализирует репозиторий при заходе в контроллер
     PhonesService phonesService;
     @GetMapping(path="/models")
-    public List<PhoneModel> GetModels (){ // названия важны
-        return phonesService.GetModels();
+    public List<PhoneModel> getModels(){ // названия важны
+        return phonesService.getModels();
     }
 }

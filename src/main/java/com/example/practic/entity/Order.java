@@ -1,15 +1,10 @@
 package com.example.practic.entity;
 
 import com.example.practic.models.NewOrderModel;
-import com.example.practic.repository.ClientRepository;
-import com.example.practic.repository.OrderRepository;
-import com.example.practic.repository.PhoneRepository;
 import org.hibernate.annotations.Type;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.Date;
 
 @Entity
@@ -71,8 +66,8 @@ public class Order {
 
     }
     public Order (NewOrderModel newOrderModel){
-        phonenumber = newOrderModel.getPhonenumber();
-        descriptionord = newOrderModel.getDescriptionord();
+        phonenumber = newOrderModel.getPhoneNumber();
+        descriptionord = newOrderModel.getDescriptionOrd();
         address = newOrderModel.getAddress();
         dateord = new Date();
         priceord = BigDecimal.valueOf(0);
@@ -82,8 +77,8 @@ public class Order {
     }
     public Order (NewOrderModel newOrderModel, Client client, PhoneModel phoneModel, Integer id){
         this.id = id;
-        phonenumber = newOrderModel.getPhonenumber();
-        descriptionord = newOrderModel.getDescriptionord();
+        phonenumber = newOrderModel.getPhoneNumber();
+        descriptionord = newOrderModel.getDescriptionOrd();
         address = newOrderModel.getAddress();
         dateord = new Date();
         priceord = BigDecimal.valueOf(0);

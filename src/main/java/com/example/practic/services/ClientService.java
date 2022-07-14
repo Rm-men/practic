@@ -13,10 +13,10 @@ import org.springframework.stereotype.Service;
 public class ClientService {
     @Autowired
     ClientRepository clientRepository;
-    public boolean LoginUser(AuthModel authModel) {
+    public boolean loginUser(AuthModel authModel) {
         try {
             // return clientRepository.getClientByEmail(authModel.getEmail()).getClpassword().equals(authModel.getClpassword());
-            return ((clientRepository.getClientByEmailAndClpassword(authModel.getEmail(), authModel.getClpassword()) != null));
+            return ((clientRepository.getClientByEmailAndPassword(authModel.getEmail(), authModel.getPassword()) != null));
         }
         catch (Exception ex) {
             ex.printStackTrace();
@@ -24,12 +24,12 @@ public class ClientService {
         return false;
     }
 
-    public RegAnswerModel RegisterUser(@NotNull RegModel regModel) throws IllegalAccessException {
+    public RegAnswerModel registerUser(@NotNull RegModel regModel) {
         RegAnswerModel regAnswerModel = new RegAnswerModel();
         regAnswerModel.setName(regModel.getName() != null);
         regAnswerModel.setFamily(regModel.getFamily()!=null);
         regAnswerModel.setPhone(regModel.getPhone()!=null);
-        regAnswerModel.setClpassword(regModel.getClpassword()!=null);
+        regAnswerModel.setPassword(regModel.getPassword()!=null);
         regAnswerModel.setEmail(regModel.getEmail()!=null);
         if (!regAnswerModel.AllFielldFilled()) return regAnswerModel;
         try {

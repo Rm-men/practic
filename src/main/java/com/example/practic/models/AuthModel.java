@@ -3,7 +3,7 @@ package com.example.practic.models;
 public class AuthModel {
     private String email;
 
-    private String clpassword;
+    private String password;
 
     public String getEmail() {
         return email;
@@ -13,17 +13,17 @@ public class AuthModel {
         this.email = email;
     }
 
-    public String getClpassword() {
-        return clpassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setClpassword(String clpassword) {
-        this.clpassword = clpassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public  AuthModel(String email, String password){
         this.email = email;
-        this.clpassword = password;
+        this.password = password;
     }
     public  AuthModel(){
 

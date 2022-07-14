@@ -12,18 +12,18 @@ public class Employee {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "id_contract", length = 8)
+    @Column(name = "idContract", length = 8)
     private String idContract;
 
-    @Column(name = "paspserial", nullable = false, length = 4)
-    private String paspserial;
+    @Column(name = "paspSerial", nullable = false, length = 4)
+    private String paspSerial;
 
-    @Column(name = "paspnumber", nullable = false, length = 6)
-    private String paspnumber;
+    @Column(name = "paspNumber", nullable = false, length = 6)
+    private String paspNumber;
 
-    @Column(name = "empaddress")
+    @Column(name = "empAddress")
     @Type(type = "org.hibernate.type.TextType")
-    private String empaddress;
+    private String empAddress;
 
     @Column(name = "type", length = 15)
     private String type;
@@ -31,12 +31,12 @@ public class Employee {
     @Column(name = "phone", nullable = false, length = 11)
     private String phone;
 
-    @Column(name = "dateemploymentet", nullable = false)
-    private LocalDate dateemploymentet;
+    @Column(name = "dateEmploymentet", nullable = false)
+    private LocalDate dateEmploymentet;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "workshop", nullable = false)
-    private ListWorkshop workshop;
+    private WorkingAddresses workshop;
 
     @Column(name = "family", nullable = false, length = 30)
     private String family;
@@ -69,28 +69,28 @@ public class Employee {
         this.idContract = idContract;
     }
 
-    public String getPaspserial() {
-        return paspserial;
+    public String getPaspSerial() {
+        return paspSerial;
     }
 
-    public void setPaspserial(String paspserial) {
-        this.paspserial = paspserial;
+    public void setPaspSerial(String paspserial) {
+        this.paspSerial = paspserial;
     }
 
-    public String getPaspnumber() {
-        return paspnumber;
+    public String getPaspNumber() {
+        return paspNumber;
     }
 
-    public void setPaspnumber(String paspnumber) {
-        this.paspnumber = paspnumber;
+    public void setPaspNumber(String paspnumber) {
+        this.paspNumber = paspnumber;
     }
 
-    public String getEmpaddress() {
-        return empaddress;
+    public String getEmpAddress() {
+        return empAddress;
     }
 
-    public void setEmpaddress(String empaddress) {
-        this.empaddress = empaddress;
+    public void setEmpAddress(String empaddress) {
+        this.empAddress = empaddress;
     }
 
     public String getType() {
@@ -109,19 +109,19 @@ public class Employee {
         this.phone = phone;
     }
 
-    public LocalDate getDateemploymentet() {
-        return dateemploymentet;
+    public LocalDate getDateEmploymentet() {
+        return dateEmploymentet;
     }
 
-    public void setDateemploymentet(LocalDate dateemploymentet) {
-        this.dateemploymentet = dateemploymentet;
+    public void setDateEmploymentet(LocalDate dateemploymentet) {
+        this.dateEmploymentet = dateemploymentet;
     }
 
-    public ListWorkshop getWorkshop() {
+    public WorkingAddresses getWorkshop() {
         return workshop;
     }
 
-    public void setWorkshop(ListWorkshop workshop) {
+    public void setWorkshop(WorkingAddresses workshop) {
         this.workshop = workshop;
     }
 

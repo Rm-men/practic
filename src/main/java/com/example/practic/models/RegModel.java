@@ -1,14 +1,12 @@
 package com.example.practic.models;
 
-import javax.persistence.Column;
-
 public class RegModel {
     private String family;
     private String name;
     private String patronymic;
     private String email;
     private String phone;
-    private String clpassword;
+    private String password;
 
     public  RegModel(){
 
@@ -19,7 +17,7 @@ public class RegModel {
         this.patronymic = patronymic;
         this.email = email;
         this.phone = phone;
-        this.clpassword = clpassword;
+        this.password = clpassword;
     }
 
     public String getEmail() {
@@ -30,12 +28,12 @@ public class RegModel {
         this.email = email;
     }
 
-    public String getClpassword() {
-        return clpassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setClpassword(String clpassword) {
-        this.clpassword = clpassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFamily() {

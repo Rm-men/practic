@@ -18,7 +18,7 @@ public class OrderStatus {
     @Type(type = "org.hibernate.type.TextType")
     private String descriptionos;
 
-    @Column(name = "logical_sequence", nullable = false)
+    @Column(name = "logicalSequence", nullable = false)
     private Integer logicalSequence;
 
     public OrderStatus(String id, String descriptionos,Integer logicalSequence ) {

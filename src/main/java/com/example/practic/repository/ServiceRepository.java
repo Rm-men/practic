@@ -1,10 +1,10 @@
 package com.example.practic.repository;
 
-import com.example.practic.entity.Manufacturer;
+import com.example.practic.entity.Sirvice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ManufacturerRepository extends JpaRepository<Manufacturer, Integer> {
+public interface ServiceRepository extends JpaRepository<Sirvice, Integer> {
 
 }

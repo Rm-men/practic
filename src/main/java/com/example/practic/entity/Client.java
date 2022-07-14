@@ -12,8 +12,8 @@ public class Client {
     @Column(name = "id_client", nullable = false)
     private Integer id;
 
-    @Column(name = "namecl", nullable = false, length = 25)
-    private String namecl;
+    @Column(name = "name", nullable = false, length = 25)
+    private String name;
 
     @Column(name = "family", nullable = false, length = 45)
     private String family;
@@ -27,27 +27,27 @@ public class Client {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "clpassword", nullable = false, length = 64)
-    private String clpassword;
+    @Column(name = "password", nullable = false, length = 64)
+    private String password;
 
     public Client(RegModel regModel)
     {
-        namecl = regModel.getName();
+        name = regModel.getName();
         family = regModel.getFamily();
         patronymic = regModel.getPatronymic();
         phone = regModel.getPhone();
         email = regModel.getEmail();
-        clpassword = regModel.getClpassword();
+        password = regModel.getPassword();
     }
     public Client(RegModel regModel, Integer id)
     {
         this.id = id;
-        namecl = regModel.getName();
+        name = regModel.getName();
         family = regModel.getFamily();
         patronymic = regModel.getPatronymic();
         phone = regModel.getPhone();
         email = regModel.getEmail();
-        clpassword = regModel.getClpassword();
+        password = regModel.getPassword();
     }
 
     public Client() {
@@ -62,12 +62,12 @@ public class Client {
         this.id = id;
     }
 
-    public String getNamecl() {
-        return namecl;
+    public String getName() {
+        return name;
     }
 
-    public void setNamecl(String namecl) {
-        this.namecl = namecl;
+    public void setName(String namecl) {
+        this.name = namecl;
     }
 
     public String getFamily() {
@@ -102,12 +102,12 @@ public class Client {
         this.email = email;
     }
 
-    public String getClpassword() {
-        return clpassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setClpassword(String clpassword) {
-        this.clpassword = clpassword;
+    public void setPassword(String clpassword) {
+        this.password = clpassword;
     }
 
 }

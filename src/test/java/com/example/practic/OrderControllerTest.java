@@ -45,10 +45,6 @@ class OrderControllerTest {
     Order order = new Order(newOrderModel_FullTrue, clientTrue, phoneModel, 1);
 
     @Test
-    void contextLoads() {
-
-    }
-    @Test
     void addingNewOrder_FulTrue() {
         assertTrue(newOrderModel_FullTrue.Truly());
 
@@ -66,7 +62,7 @@ class OrderControllerTest {
                 .when(orderStatusRepository)
                 .getOrderStatusById("add_0");
 
-        assertTrue(orderService.CreateNewOrder(newOrderModel_FullTrue));
+        assertTrue(orderService.createNewOrder(newOrderModel_FullTrue));
 
         verify(orderRepository, times(1)).save(any());
     }
@@ -88,7 +84,7 @@ class OrderControllerTest {
                 .when(orderStatusRepository)
                 .getOrderStatusById("add_0");
 
-        assertFalse(orderService.CreateNewOrder(newOrderModel_NotFilled));
+        assertFalse(orderService.createNewOrder(newOrderModel_NotFilled));
 
         verify(orderRepository, times(0)).save(any());
     }
@@ -110,7 +106,7 @@ class OrderControllerTest {
                 .when(orderStatusRepository)
                 .getOrderStatusById("add_0");
 
-        assertNull(orderService.CreateNewOrder(newOrderModel_NotClient));
+        assertNull(orderService.createNewOrder(newOrderModel_NotClient));
 
         verify(orderRepository, times(0)).save(any());
     }
@@ -132,7 +128,7 @@ class OrderControllerTest {
                 .when(orderStatusRepository)
                 .getOrderStatusById("add_0");
 
-        assertNull(orderService.CreateNewOrder(newOrderModel_NotPhone));
+        assertNull(orderService.createNewOrder(newOrderModel_NotPhone));
         verify(orderRepository, times(0)).save(any());
     }
 
@@ -142,8 +138,8 @@ class OrderControllerTest {
                 .when(orderRepository)
                 .getOrderById(order.getId());
 
-        assertTrue(orderService.OrderSetAgreement(order.getId(), true));
-        assertTrue(orderService.OrderSetAgreement(order.getId(), false));
+        assertTrue(orderService.orderSetAgreement(order.getId(), true));
+        assertTrue(orderService.orderSetAgreement(order.getId(), false));
         verify(orderRepository, times(2)).save(any());
     }
     @Test
@@ -152,7 +148,7 @@ class OrderControllerTest {
                 .when(orderRepository)
                 .getOrderById(order.getId());
 
-        assertNull(orderService.OrderSetAgreement(order.getId(), null));
+        assertNull(orderService.orderSetAgreement(order.getId(), null));
         verify(orderRepository, times(0)).save(any());
     }
     @Test
@@ -161,7 +157,7 @@ class OrderControllerTest {
                 .when(orderRepository)
                 .getOrderById(order.getId());*/
 
-        assertFalse(orderService.OrderSetAgreement(order.getId()+1, true));
+        assertFalse(orderService.orderSetAgreement(order.getId()+1, true));
         verify(orderRepository, times(0)).save(any());
     }
 
@@ -171,7 +167,7 @@ class OrderControllerTest {
                 .when(orderRepository)
                 .getOrderById(order.getId());
 
-        assertTrue(orderService.OrderSetPayed(order.getId(), true));
+        assertTrue(orderService.orderSetPayed(order.getId(), true));
         verify(orderRepository, times(1)).save(any());
     }
     @Test
@@ -180,7 +176,7 @@ class OrderControllerTest {
                 .when(orderRepository)
                 .getOrderById(order.getId());
 
-        assertNull(orderService.OrderSetPayed(order.getId(), null));
+        assertNull(orderService.orderSetPayed(order.getId(), null));
         verify(orderRepository, times(0)).save(any());
     }
     @Test
@@ -189,7 +185,7 @@ class OrderControllerTest {
                 .when(orderRepository)
                 .getOrderById(order.getId());*/
 
-        assertFalse(orderService.OrderSetPayed(order.getId()+1, true));
+        assertFalse(orderService.orderSetPayed(order.getId()+1, true));
         verify(orderRepository, times(0)).save(any());
     }
 

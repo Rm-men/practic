@@ -7,35 +7,35 @@ import java.time.Instant;
 @Table(name = "story_order_move")
 public class StoryOrderMove {
     @Id
-    @Column(name = "idmove", nullable = false)
+    @Column(name = "id_move", nullable = false)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idorder")
-    private Order idorder;
+    @JoinColumn(name = "idOrder")
+    private Order idOrder;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idhuman")
-    private Employee idhuman;
+    @JoinColumn(name = "idHuman")
+    private Employee idHuman;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idoldstatus")
-    private OrderStatus idoldstatus;
+    @JoinColumn(name = "idOldStatus")
+    private OrderStatus idOldStatus;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idnewstatus")
-    private OrderStatus idnewstatus;
+    @JoinColumn(name = "idNewStatus")
+    private OrderStatus idNewStatus;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idoldaddress")
-    private ListWorkshop idoldaddress;
+    @JoinColumn(name = "idOldAddress")
+    private WorkingAddresses idOldAddress;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idnewaddress")
-    private ListWorkshop idnewaddress;
+    @JoinColumn(name = "idNewAddress")
+    private WorkingAddresses idNewAddress;
 
-    @Column(name = "somdate")
-    private Instant somdate;
+    @Column(name = "date")
+    private Instant date;
 
     public Integer getId() {
         return id;
@@ -45,60 +45,60 @@ public class StoryOrderMove {
         this.id = id;
     }
 
-    public Order getIdorder() {
-        return idorder;
+    public Order getIdOrder() {
+        return idOrder;
     }
 
-    public void setIdorder(Order idorder) {
-        this.idorder = idorder;
+    public void setIdOrder(Order idorder) {
+        this.idOrder = idorder;
     }
 
-    public Employee getIdhuman() {
-        return idhuman;
+    public Employee getIdHuman() {
+        return idHuman;
     }
 
-    public void setIdhuman(Employee idhuman) {
-        this.idhuman = idhuman;
+    public void setIdHuman(Employee idhuman) {
+        this.idHuman = idhuman;
     }
 
-    public OrderStatus getIdoldstatus() {
-        return idoldstatus;
+    public OrderStatus getIdOldStatus() {
+        return idOldStatus;
     }
 
-    public void setIdoldstatus(OrderStatus idoldstatus) {
-        this.idoldstatus = idoldstatus;
+    public void setIdOldStatus(OrderStatus idoldstatus) {
+        this.idOldStatus = idoldstatus;
     }
 
-    public OrderStatus getIdnewstatus() {
-        return idnewstatus;
+    public OrderStatus getIdNewStatus() {
+        return idNewStatus;
     }
 
-    public void setIdnewstatus(OrderStatus idnewstatus) {
-        this.idnewstatus = idnewstatus;
+    public void setIdNewStatus(OrderStatus idnewstatus) {
+        this.idNewStatus = idnewstatus;
     }
 
-    public ListWorkshop getIdoldaddress() {
-        return idoldaddress;
+    public WorkingAddresses getIdOldAddress() {
+        return idOldAddress;
     }
 
-    public void setIdoldaddress(ListWorkshop idoldaddress) {
-        this.idoldaddress = idoldaddress;
+    public void setIdOldAddress(WorkingAddresses idoldaddress) {
+        this.idOldAddress = idoldaddress;
     }
 
-    public ListWorkshop getIdnewaddress() {
-        return idnewaddress;
+    public WorkingAddresses getIdNewAddress() {
+        return idNewAddress;
     }
 
-    public void setIdnewaddress(ListWorkshop idnewaddress) {
-        this.idnewaddress = idnewaddress;
+    public void setIdNewAddress(WorkingAddresses idnewaddress) {
+        this.idNewAddress = idnewaddress;
     }
 
-    public Instant getSomdate() {
-        return somdate;
+    public Instant getDate() {
+        return date;
     }
 
-    public void setSomdate(Instant somdate) {
-        this.somdate = somdate;
+    public void setDate(Instant somdate) {
+        this.date = somdate;
     }
 
 }

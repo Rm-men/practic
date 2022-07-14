@@ -1,0 +1,455 @@
+{
+	"info": {
+		"_postman_id": "57706c98-bd36-4dab-a5b3-51539249a713",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19762352"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "OrderController",
+					"item": [
+						{
+							"name": "GetOrderForUser",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/order/get_order_for?id_client=38",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"order",
+										"get_order_for"
+									],
+									"query": [
+										{
+											"key": "id_client",
+											"value": "38"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetOrder",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/order/get_order?id=59",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"order",
+										"get_order"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "59"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetOrderMove",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/order/get_order_move?idorder=53",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"order",
+										"get_order_move"
+									],
+									"query": [
+										{
+											"key": "idorder",
+											"value": "53"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SetOrderAgreementTrue",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/order/set_agree?idorder=57&agreement=true",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"order",
+										"set_agree"
+									],
+									"query": [
+										{
+											"key": "idorder",
+											"value": "57"
+										},
+										{
+											"key": "agreement",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SetOrderAgreementTrue Copy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/order/set_pay?idorder=57&payed=true",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"order",
+										"set_pay"
+									],
+									"query": [
+										{
+											"key": "idorder",
+											"value": "57"
+										},
+										{
+											"key": "payed",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SetOrderAgreementFalse",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/order/set_agree?idorder=57&agreement=false",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"order",
+										"set_agree"
+									],
+									"query": [
+										{
+											"key": "idorder",
+											"value": "57"
+										},
+										{
+											"key": "agreement",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PhonesController",
+					"item": [
+						{
+							"name": "GetAllModels",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/phones/models",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"phones",
+										"models"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "WorksController",
+					"item": [
+						{
+							"name": "GetAddress",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/works/get_address",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"works",
+										"get_address"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "AuthController",
+					"item": [
+						{
+							"name": "Register",
+							"item": [
+								{
+									"name": "Reg fail",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"family\":\"iii@m.com\",\r\n    \"name\":\"iii@m.com\",\r\n    \"patronymic\":\"iii@m.com\",\r\n    \"phone\":\"iii@m.com\",\r\n    \"email\":\"iii@m.com\",\r\n    \"clpassword\":\"a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/auth/signon",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"auth",
+												"signon"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Reg compl",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"family\":\"1\",\r\n    \"name\":\"2\",\r\n    \"patronymic\":\"3\",\r\n    \"phone\":\"8909132222\",\r\n    \"email\":\"123@m.com\",\r\n    \"clpassword\":\"123\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/auth/signon",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"auth",
+												"signon"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Auth",
+							"item": [
+								{
+									"name": "Auth",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\":\"iii@m.com\",\r\n    \"clpassword\":\"a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/auth/signin",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"auth",
+												"signin"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Auth fail - not filled",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\":\"\",\r\n    \"clpassword\":\"\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/auth/signin",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"auth",
+												"signin"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Auth fail - bad password/mail",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\":\"правильнаяПочта\",\r\n    \"clpassword\":\"числобуквы\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/auth/signin",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"auth",
+												"signin"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "OrderController",
+					"item": [
+						{
+							"name": "NewOrder compl",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id_client\": 38,\r\n    \"phonenumber\":\"89091324445\",\r\n    \"address\":\"Ул. Московская 36\",\r\n    \"idPhoneModel\": 1,\r\n    \"descriptionord\": \"Все сломалось\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/order/neworder",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"order",
+										"neworder"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://ca4952d7-b451-4173-96a4-879f680514d1.mock.pstmn.io"
+		}
+	]
+}

@@ -40,41 +40,40 @@ class AuthControllerTest {
     void authTest_FullTrue() { // +
         Mockito.doReturn (clientTrue)
                 .when(clientRepository)
-                .getClientByEmailAndClpassword(clientTrue.getEmail(), clientTrue.getClpassword());
+                .getClientByEmailAndPassword(clientTrue.getEmail(), clientTrue.getPassword());
 
-        assertTrue(clientService.LoginUser(authModel_FullTrue));
+        assertTrue(clientService.loginUser(authModel_FullTrue));
 
-        verify(clientRepository).getClientByEmailAndClpassword(clientTrue.getEmail(), clientTrue.getClpassword());
+        verify(clientRepository).getClientByEmailAndPassword(clientTrue.getEmail(), clientTrue.getPassword());
     }
     @Test
     void authTest_FullFail(){ // ???
 
-        assertFalse(clientService.LoginUser(authModel_FullFail));
+        assertFalse(clientService.loginUser(authModel_FullFail));
 
         // verify(clientRepository).getClientByEmailAndClpassword(clientFail.getEmail(), clientFail.getClpassword());
     }
 
     @Test
-    void registerTest_FullTrue() throws IllegalAccessException {
-        RegAnswerModel regAnswerModel = clientService.RegisterUser(regModel_FullTrue);
+    void registerTest_FullTrue()  {
+        RegAnswerModel regAnswerModel = clientService.registerUser(regModel_FullTrue);
         assertTrue(regAnswerModel.getRegComplete());
         Mockito.verify(clientRepository, Mockito.times(1)).save(any());
     }
-
     @Test
-    void registerTest_Fail_UserIsExist() throws IllegalAccessException { // +
+    void registerTest_Fail_UserIsExist() { // +
         Mockito.doReturn (clientTrue)
                 .when(clientRepository)
                 .getClientByEmail(clientTrue.getEmail());
 
-        RegAnswerModel regAnswerModel = clientService.RegisterUser(regModel_FullTrue);
+        RegAnswerModel regAnswerModel = clientService.registerUser(regModel_FullTrue);
         assertFalse(regAnswerModel.getUserIsNotExist());
         assertFalse(regAnswerModel.getRegComplete());
         Mockito.verify(clientRepository, Mockito.times(0)).save(any());
     }
     @Test
-    void registerTest_Fail_NotFilledFields() throws IllegalAccessException { // +
-        RegAnswerModel regAnswerModel = clientService.RegisterUser(regModel_NotFulFail);
+    void registerTest_Fail_NotFilledFields()  { // +
+        RegAnswerModel regAnswerModel = clientService.registerUser(regModel_NotFulFail);
         assertFalse(regAnswerModel.AllFielldFilled());
         assertFalse(regAnswerModel.getRegComplete());
         Mockito.verify(clientRepository, Mockito.times(0)).save(any());
