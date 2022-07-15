@@ -13,7 +13,7 @@ public class Phone {
     private String imei;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idPhoneModel")
+    @JoinColumn(name = "\"id_phone_model\"")
     private PhoneModel idPhoneModel;
 
     public Integer getId() {

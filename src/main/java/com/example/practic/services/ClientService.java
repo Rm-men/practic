@@ -2,9 +2,9 @@ package com.example.practic.services;
 
 import com.example.practic.entity.Client;
 import com.example.practic.models.AuthModel;
-import com.example.practic.models.RegAnswerModel;
+import com.example.practic.models.RegAnswerModelBuilder;
 import com.example.practic.models.RegModel;
-import com.example.practic.repository.ClientRepository;
+import com.example.practic.repository.*;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,6 @@ public class ClientService {
     ClientRepository clientRepository;
     public boolean loginUser(AuthModel authModel) {
         try {
-            // return clientRepository.getClientByEmail(authModel.getEmail()).getClpassword().equals(authModel.getClpassword());
             return ((clientRepository.getClientByEmailAndPassword(authModel.getEmail(), authModel.getPassword()) != null));
         }
         catch (Exception ex) {
@@ -24,42 +23,28 @@ public class ClientService {
         return false;
     }
 
-    public RegAnswerModel registerUser(@NotNull RegModel regModel) {
-        RegAnswerModel regAnswerModel = new RegAnswerModel();
-        regAnswerModel.setName(regModel.getName() != null);
-        regAnswerModel.setFamily(regModel.getFamily()!=null);
-        regAnswerModel.setPhone(regModel.getPhone()!=null);
-        regAnswerModel.setPassword(regModel.getPassword()!=null);
-        regAnswerModel.setEmail(regModel.getEmail()!=null);
-        if (!regAnswerModel.AllFielldFilled()) return regAnswerModel;
+    public RegAnswerModelBuilder registerUser(@NotNull RegModel regModel) {
+        RegAnswerModelBuilder regAnswerModelBuilder = new RegAnswerModelBuilder()
+                .withName(regModel.getName())
+                .withFamily(regModel.getFamily())
+                .withPhone(regModel.getPhone())
+                .withPassword(regModel.getPassword())
+                .withEmail(regModel.getEmail())
+                .build();
+        if (regAnswerModelBuilder != null) return regAnswerModelBuilder;
         try {
             if (clientRepository.getClientByEmail(regModel.getEmail()) == null)
             {
-                regAnswerModel.setUserIsNotExist(true);
+                regAnswerModelBuilder.setUserIsNotExist(true);
                 Client client = new Client(regModel);
                 clientRepository.save(client);
-                regAnswerModel.setRegComplete();
+                regAnswerModelBuilder.setRegComplete();
             }
-            else regAnswerModel.setUserIsNotExist(false);
+            else regAnswerModelBuilder.setUserIsNotExist(false);
         }
         catch (Exception ex) {
             ex.printStackTrace();
         }
-        return regAnswerModel;
-    }
-    public boolean RegisterUser2(RegModel regModel) {
-        try {
-            // if (clientRepository.getClientByEmail(regModel.getEmail()).getClpassword().equals(regModel.getClpassword()))
-            {
-                Client client = new Client(regModel);
-                clientRepository.save(client);
-            }
-            // else
-            return true;
-        }
-        catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return false;
+        return regAnswerModelBuilder;
     }
 }

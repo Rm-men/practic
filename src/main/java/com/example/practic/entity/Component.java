@@ -7,14 +7,14 @@ import java.math.BigDecimal;
 @Table(name = "component")
 public class Component {
     @Id
-    @Column(name = "id_component", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @Column(name = "type", nullable = false, length = 20)
     private String type;
 
     @Column(name = "name", nullable = false, length = 40)
-    private String namecmp;
+    private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_guarantee")
@@ -42,40 +42,40 @@ public class Component {
         return type;
     }
 
-    public void setType(String typecmp) {
-        this.type = typecmp;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getNamecmp() {
-        return namecmp;
+    public String getName() {
+        return name;
     }
 
-    public void setNamecmp(String namecmp) {
-        this.namecmp = namecmp;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Guarantee getIdGuarantee() {
         return idGuarantee;
     }
 
-    public void setIdGuarantee(Guarantee idGuaranteecmp) {
-        this.idGuarantee = idGuaranteecmp;
+    public void setIdGuarantee(Guarantee idGuarantee) {
+        this.idGuarantee = idGuarantee;
     }
 
     public Manufacturer getManufacturer() {
         return manufacturer;
     }
 
-    public void setManufacturer(Manufacturer manufacturercmp) {
-        this.manufacturer = manufacturercmp;
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
     public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal pricecmp) {
-        this.price = pricecmp;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public Integer getCount() {

@@ -1,6 +1,8 @@
 package com.example.practic;
 
 import com.example.practic.entity.*;
+import com.example.practic.exceptions.NotFilledFieldsEcxeption;
+import com.example.practic.exceptions.NotFindOrderEcxeption;
 import com.example.practic.models.NewOrderModel;
 import com.example.practic.models.RegModel;
 import com.example.practic.repository.*;
@@ -21,7 +23,7 @@ class OrderControllerTest {
     @InjectMocks
     private OrderService orderService;
     @Mock
-    private OrderRepository orderRepository;
+    private com.example.practic.repository.OrderRepository orderRepository;
     @Mock
     private ClientRepository clientRepository;
     @Mock
@@ -33,15 +35,19 @@ class OrderControllerTest {
     @Mock
     private StoryOrderMoveRepository storyOrderMoveRepository;
 
-    Client clientTrue = new Client(new RegModel( "family", "name",  "patronymic",  "email",  "phone",  "clpassword"), 1);
+    Client clientTrue = new Client(new RegModel().withName("name").withEmail("email").withFamily( "family").withPatronymic("patronymic").withPhone("phone").withPassword("clpassword"), 1);
     Guarantee guarantee = new Guarantee(1,1,"conditions");
     Manufacturer manufacturer = new Manufacturer(1, "name manufacturer");
     PhoneModel phoneModel = new PhoneModel(1,"namephone","specifications",guarantee,manufacturer);
     OrderStatus orderStatus = new OrderStatus("add_0", "заказ добавлен", 1);
-    NewOrderModel newOrderModel_FullTrue = new NewOrderModel(1,"phone","adress",1,"descrition order");
+/*    NewOrderModel newOrderModel_FullTrue = new NewOrderModel(1,"phone","adress",1,"descrition order");
     NewOrderModel newOrderModel_NotFilled = new NewOrderModel(1,"phone",null,1,"descrition order");
     NewOrderModel newOrderModel_NotClient = new NewOrderModel(2,"phone","adress",1,"descrition order");
-    NewOrderModel newOrderModel_NotPhone = new NewOrderModel(1,"phone","adress",2,"descrition order");
+    NewOrderModel newOrderModel_NotPhone = new NewOrderModel(1,"phone","adress",2,"descrition order");*/
+    NewOrderModel newOrderModel_FullTrue = new NewOrderModel().withIdClient(1).withPhoneModel(1).withDescription("decr").withAddress("address").withPhoneNumber("phone");
+    NewOrderModel newOrderModel_NotFilled = new NewOrderModel().withIdClient(1).withPhoneModel(1).withDescription("decr").withPhoneNumber("phone");
+    NewOrderModel newOrderModel_NotClient = new NewOrderModel().withIdClient(2).withPhoneModel(1).withDescription("decr").withAddress("address").withPhoneNumber("phone");
+    NewOrderModel newOrderModel_NotPhone = new NewOrderModel().withIdClient(1).withPhoneModel(2).withDescription("decr").withAddress("address").withPhoneNumber("phone");
     Order order = new Order(newOrderModel_FullTrue, clientTrue, phoneModel, 1);
 
     @Test
@@ -133,7 +139,7 @@ class OrderControllerTest {
     }
 
     @Test
-    void settingAgreement_FullTrue(){ // +
+    void settingAgreement_FullTrue() throws NotFindOrderEcxeption, NotFilledFieldsEcxeption { // +
         doReturn (order)
                 .when(orderRepository)
                 .getOrderById(order.getId());
@@ -143,7 +149,7 @@ class OrderControllerTest {
         verify(orderRepository, times(2)).save(any());
     }
     @Test
-    void settingAgreement_NotFilledAgree(){ // +
+    void settingAgreement_NotFilledAgree() throws NotFindOrderEcxeption, NotFilledFieldsEcxeption { // +
         doReturn (order)
                 .when(orderRepository)
                 .getOrderById(order.getId());
@@ -152,7 +158,7 @@ class OrderControllerTest {
         verify(orderRepository, times(0)).save(any());
     }
     @Test
-    void settingAgreement_NotFindOrder(){ // +
+    void settingAgreement_NotFindOrder() throws NotFindOrderEcxeption, NotFilledFieldsEcxeption { // +
 /*        doReturn (order)
                 .when(orderRepository)
                 .getOrderById(order.getId());*/
@@ -162,7 +168,7 @@ class OrderControllerTest {
     }
 
     @Test
-    void settingPay_FullTrue(){ //
+    void settingPay_FullTrue() throws NotFindOrderEcxeption, NotFilledFieldsEcxeption { //
         doReturn (order)
                 .when(orderRepository)
                 .getOrderById(order.getId());
@@ -171,7 +177,7 @@ class OrderControllerTest {
         verify(orderRepository, times(1)).save(any());
     }
     @Test
-    void settingPay_NotFilledAgree(){ //
+    void settingPay_NotFilledAgree() throws NotFindOrderEcxeption, NotFilledFieldsEcxeption { //
         doReturn (order)
                 .when(orderRepository)
                 .getOrderById(order.getId());
@@ -180,7 +186,7 @@ class OrderControllerTest {
         verify(orderRepository, times(0)).save(any());
     }
     @Test
-    void settingPay_NotFindOrder(){ //
+    void settingPay_NotFindOrder() throws NotFindOrderEcxeption, NotFilledFieldsEcxeption { //
 /*        doReturn (order)
                 .when(orderRepository)
                 .getOrderById(order.getId());*/

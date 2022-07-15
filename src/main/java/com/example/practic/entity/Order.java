@@ -5,23 +5,23 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.Date;
 
 @Entity
 @Table(name = "orders")
 public class Order {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_order", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "dateord")
-    private Date dateord;
+    @Column(name = "date")
+    private Date date;
 
-    @Column(name = "phonenumber")
+    @Column(name = "\"phone_number\"")
     @Type(type = "org.hibernate.type.TextType")
-    private String phonenumber;
+    private String phoneNumber;
 
     @Column(name = "address")
     private String address;
@@ -30,27 +30,27 @@ public class Order {
     @JoinColumn(name = "id_client")
     private Client idClient;
 
-    @Column(name = "id_master")
+    @Column(name = "\"id_master\"")
     private Integer idMaster;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_phone")
+    @JoinColumn(name = "\"id_phone\"")
     private PhoneModel idPhone;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_order_status")
+    @JoinColumn(name = "\"id_order_status\"")
     private OrderStatus idOrderStatus;
 
-    @Column(name = "descriptionord")
+    @Column(name = "description")
     @Type(type = "org.hibernate.type.TextType")
-    private String descriptionord;
+    private String description;
 
     @Column(name = "comments")
     @Type(type = "org.hibernate.type.TextType")
     private String comments;
 
-    @Column(name = "priceord", precision = 12, scale = 2)
-    private BigDecimal priceord;
+    @Column(name = "price", precision = 12, scale = 2)
+    private BigDecimal price;
 
     @Column(name = "agreement")
     private Boolean agreement;
@@ -61,41 +61,41 @@ public class Order {
 
     @Column(name = "payed")
     private Boolean payed;
-
     public Order (){
 
     }
     public Order (NewOrderModel newOrderModel){
-        phonenumber = newOrderModel.getPhoneNumber();
-        descriptionord = newOrderModel.getDescriptionOrd();
+        phoneNumber = newOrderModel.getPhoneNumber();
+        description = newOrderModel.getDescriptionOrd();
         address = newOrderModel.getAddress();
-        dateord = new Date();
-        priceord = BigDecimal.valueOf(0);
+        date = new Date();
+        price = BigDecimal.valueOf(0);
         idMaster = 0;
         // idPhone = newOrderModel.getIdPhoneModel();
         // idClient = clientRepository.getById(newOrderModel.getIdClient());
     }
     public Order (NewOrderModel newOrderModel, Client client, PhoneModel phoneModel, Integer id){
         this.id = id;
-        phonenumber = newOrderModel.getPhoneNumber();
-        descriptionord = newOrderModel.getDescriptionOrd();
+        phoneNumber = newOrderModel.getPhoneNumber();
+        description = newOrderModel.getDescriptionOrd();
         address = newOrderModel.getAddress();
-        dateord = new Date();
-        priceord = BigDecimal.valueOf(0);
+        date = new Date();
+        price = BigDecimal.valueOf(0);
         idMaster = 0;
         idPhone = phoneModel;
         idClient = client;
     }
     public Boolean ValidCheck(){
         return
-                phonenumber != null &
-                descriptionord != null &
-                address != null &
-                dateord != null &
-                priceord != null &
-                idMaster == 0 &
-                idPhone != null &
                 idClient != null &
+                phoneNumber != null &
+                description != null &
+                address != null &
+                idPhone != null &
+
+                date != null &
+                price != null &
+                idMaster == 0 &
                 idOrderStatus != null;
     }
 
@@ -107,20 +107,20 @@ public class Order {
         this.id = id;
     }
 
-    public Date getDateord() {
-        return dateord;
+    public Date getDate() {
+        return date;
     }
 
-    public void setDateord(Date dateord) {
-        this.dateord = dateord;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public String getPhonenumber() {
-        return phonenumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getAddress() {
@@ -163,12 +163,12 @@ public class Order {
         this.idOrderStatus = idOrderStatus;
     }
 
-    public String getDescriptionord() {
-        return descriptionord;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescriptionord(String descriptionord) {
-        this.descriptionord = descriptionord;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getComments() {
@@ -179,12 +179,12 @@ public class Order {
         this.comments = comments;
     }
 
-    public BigDecimal getPriceord() {
-        return priceord;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setPriceord(BigDecimal priceord) {
-        this.priceord = priceord;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public Boolean getAgreement() {
@@ -210,5 +210,6 @@ public class Order {
     public void setPayed(Boolean payed) {
         this.payed = payed;
     }
+
 
 }

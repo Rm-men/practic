@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Table(name = "manufacturer")
 public class Manufacturer {
     @Id
-    @Column(name = "id_manufacturer", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @Column(name = "name", nullable = false, length = 150)
@@ -38,5 +38,6 @@ public class Manufacturer {
     public void setName(String name) {
         this.name = name;
     }
+
 
 }

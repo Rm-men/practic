@@ -3,6 +3,7 @@ package com.example.practic;
 import com.example.practic.entity.Client;
 import com.example.practic.models.AuthModel;
 import com.example.practic.models.RegAnswerModel;
+import com.example.practic.models.RegAnswerModelBuilder;
 import com.example.practic.models.RegModel;
 import com.example.practic.repository.ClientRepository;
 import com.example.practic.services.ClientService;
@@ -27,11 +28,18 @@ class AuthControllerTest {
     @Mock
     private ClientRepository clientRepository;
 
-    AuthModel authModel_FullTrue = new AuthModel("email", "clpassword");
+/*    AuthModel authModel_FullTrue = new AuthModel("email", "clpassword");
     RegModel regModel_FullTrue = new RegModel( "family", "name",  "patronymic",  "email",  "phone",  "clpassword");
     AuthModel authModel_FullFail = new AuthModel("_email", "_clpassword");
     RegModel regModel_FullFail = new RegModel( "_family", "_name",  "_patronymic",  "_email",  "_phone",  "_clpassword");
     RegModel regModel_NotFulFail = new RegModel( "_family", null,  null,  "_email",  "_phone",  "_clpassword");
+    */
+    AuthModel authModel_FullTrue = new AuthModel("email", "clpassword");
+    RegModel regModel_FullTrue = new RegModel().withFamily("family").withName("name").withPatronymic("patronymic").withEmail("email").withPhone("phone").withPassword("clpassword").build();
+    AuthModel authModel_FullFail = new AuthModel("_email", "_clpassword");
+
+    RegModel regModel_FullFail = new RegModel().withFamily("_family").withName("_name").withPatronymic("_patronymic").withEmail("_email").withPhone("_phone").withPassword("_clpassword").build();
+    RegModel regModel_NotFulFail = new RegModel().withFamily("family").withEmail("email").withPhone("phone").withPassword("clpassword").build();
 
     Client clientTrue = new Client(regModel_FullTrue);
     Client clientFail = new Client(regModel_FullFail);
@@ -56,7 +64,7 @@ class AuthControllerTest {
 
     @Test
     void registerTest_FullTrue()  {
-        RegAnswerModel regAnswerModel = clientService.registerUser(regModel_FullTrue);
+        RegAnswerModelBuilder regAnswerModel = clientService.registerUser(regModel_FullTrue);
         assertTrue(regAnswerModel.getRegComplete());
         Mockito.verify(clientRepository, Mockito.times(1)).save(any());
     }
@@ -66,14 +74,14 @@ class AuthControllerTest {
                 .when(clientRepository)
                 .getClientByEmail(clientTrue.getEmail());
 
-        RegAnswerModel regAnswerModel = clientService.registerUser(regModel_FullTrue);
+        RegAnswerModelBuilder regAnswerModel = clientService.registerUser(regModel_FullTrue);
         assertFalse(regAnswerModel.getUserIsNotExist());
         assertFalse(regAnswerModel.getRegComplete());
         Mockito.verify(clientRepository, Mockito.times(0)).save(any());
     }
     @Test
     void registerTest_Fail_NotFilledFields()  { // +
-        RegAnswerModel regAnswerModel = clientService.registerUser(regModel_NotFulFail);
+        RegAnswerModelBuilder regAnswerModel = clientService.registerUser(regModel_NotFulFail);
         assertFalse(regAnswerModel.AllFielldFilled());
         assertFalse(regAnswerModel.getRegComplete());
         Mockito.verify(clientRepository, Mockito.times(0)).save(any());

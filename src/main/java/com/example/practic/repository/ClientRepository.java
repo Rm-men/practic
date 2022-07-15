@@ -8,5 +8,7 @@ import org.springframework.stereotype.Repository;
 public interface ClientRepository extends JpaRepository<Client, Integer> {
     Client getClientById (Integer id);
     Client getClientByEmail(String email);
+    // Client getClientByEmailAndClpassword(String email, String clpassword);
+
     Client getClientByEmailAndPassword(String email, String password);
 }

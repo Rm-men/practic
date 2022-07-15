@@ -8,6 +8,7 @@ import java.util.List;
 
 @Repository
 public interface StoryOrderMoveRepository extends JpaRepository<StoryOrderMove, Integer> {
-    List<StoryOrderMove> getAllByIdorder (Integer id);
-    List<StoryOrderMove> getStoryOrderMovesByIdorderId(Integer id);
+    // List<StoryOrderMove> getAllByIdorder (Integer id);
+    // List<StoryOrderMove> getStoryOrderMovesByIdorderId(Integer id);
+    List<StoryOrderMove> getStoryOrderMovesByIdOrderId(Integer id);
 }

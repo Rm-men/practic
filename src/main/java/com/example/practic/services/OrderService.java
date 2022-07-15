@@ -2,8 +2,12 @@ package com.example.practic.services;
 
 import com.example.practic.entity.Order;
 import com.example.practic.entity.StoryOrderMove;
+import com.example.practic.exceptions.NotFilledFieldsEcxeption;
+import com.example.practic.exceptions.NotFindOrderEcxeption;
 import com.example.practic.models.NewOrderModel;
 import com.example.practic.repository.*;
+import com.example.practic.repository.ClientRepository;
+import com.example.practic.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,61 +16,89 @@ import java.util.List;
 @Service
 public class OrderService {
     @Autowired
-    OrderRepository orderRepository;
+    OrderRepository orderRepo;
     @Autowired
-    ClientRepository clientRepository;
+    ClientRepository clientRepo;
     @Autowired
-    PhoneRepository phoneRepository;
+    com.example.practic.repository.PhoneModelsRepository phoneModelsRepo;
     @Autowired
-    PhoneModelsRepository phoneModelsRepository;
+    com.example.practic.repository.OrderStatusRepository orderStatusRepo;
     @Autowired
-    OrderStatusRepository orderStatusRepository;
+    com.example.practic.repository.ListWorkshopRepository workingAddressesRepo;
     @Autowired
-    WorkingAddressesRepository listWorkshopRepository;
+    com.example.practic.repository.StoryOrderMoveRepository storyOrderMoveRepository;
+/*    @Autowired
+    PhoneModelsRepo phoneModelsRepo;
     @Autowired
-    StoryOrderMoveRepository storyOrderMoveRepository;
+    OrderStatusRepo orderStatusRepo;
+    @Autowired
+    WorkingAddressesRepo workingAddressesRepo;
+    @Autowired
+    StoryOrderMoveRepostoryOrderMoveRepo;*/
     public List<Order> getOrdersFor(Integer id_client) {
-        return orderRepository.getAllByIdClientId(id_client);
+        return orderRepo.getOrdersByIdClientId(id_client);
     }
     public Order getOrder(Integer id) {
-        return orderRepository.getOrderById(id);
+        return orderRepo.getOrderById(id);
     }
-    public Boolean orderSetAgreement(Integer id, Boolean agree) {
-        if (orderRepository.getOrderById(id) == null)
+    public Boolean orderSetAgreement(Integer id, Boolean agree) throws NotFindOrderEcxeption, NotFilledFieldsEcxeption {
+/*
+        if (orderRepo.getOrderById(id) == null)
             return false;
         if (agree == null)
             return null;
-        Order order = orderRepository.getOrderById(id);
+        Order order = orderRepo.getOrderById(id);
         order.setAgreement(agree);
-        orderRepository.save(order);
+        orderRepo.save(order);
+        return true;
+        */
+        if (orderRepo.getOrderById(id) == null)
+            throw new NotFindOrderEcxeption(id);
+        if (agree == null)
+            throw new NotFilledFieldsEcxeption("Не заполнено поле с согласием");
+        Order order = orderRepo.getOrderById(id);
+        order.setAgreement(agree);
+        orderRepo.save(order);
         return true;
     }
-    public Boolean orderSetPayed(Integer id, Boolean pay) {
-        if (orderRepository.getOrderById(id) == null)
-            return false;
+    public Boolean orderSetPayed(Integer id, Boolean pay) throws NotFilledFieldsEcxeption, NotFindOrderEcxeption {
+        if (orderRepo.getOrderById(id) == null)
+            throw new NotFindOrderEcxeption(id);
         if (pay == null)
-            return null;
-        Order order = orderRepository.getOrderById(id);
+            throw new NotFilledFieldsEcxeption("Не заполнено поле оплаты");
+        Order order = orderRepo.getOrderById(id);
         order.setPayed(pay);
-        orderRepository.save(order);
+        orderRepo.save(order);
         return true;
     }
     public List<StoryOrderMove> getStoryOrderMove(Integer id) {
-        return storyOrderMoveRepository.getStoryOrderMovesByIdorderId(id);
+        return storyOrderMoveRepository.getStoryOrderMovesByIdOrderId(id);
     }
     public Boolean createNewOrder(NewOrderModel newOrderModel) {
         try {
             if (newOrderModel.Truly())
             {
                 Order order = new Order(newOrderModel);
-                order.setIdClient(clientRepository.getClientById(newOrderModel.getIdClient()));
-                order.setIdPhone(phoneModelsRepository.getPhoneModelById(newOrderModel.getIdPhoneModel()));
-                order.setIdOrderStatus(orderStatusRepository.getOrderStatusById("add_0"));
-                if (!order.ValidCheck())
-                    return null;
-                orderRepository.save(order); // возвражает заказ (без ид) или обшибка
+                order.setIdClient(clientRepo.getClientById(newOrderModel.getIdClient()));
+                order.setIdPhone(phoneModelsRepo.getPhoneModelById(newOrderModel.getIdPhoneModel()));
+                order.setIdOrderStatus(orderStatusRepo.getOrderStatusById("add_0"));
+                if (!order.ValidCheck()) {
+                    String noFilled = "";
+                    if (order.getDate() == null)
+                        noFilled+= "дата ";
+                    if (order.getPrice() == null)
+                        noFilled+= "цена ";
+                    if (order.getIdMaster() == null)
+                        noFilled+= "мастер ";
+                    if (order.getIdOrderStatus() == null)
+                        noFilled+= "статус заказа ";
+                    throw new NotFilledFieldsEcxeption("Не заполнены следующие поля: "+ noFilled);
+                }
+                orderRepo.save(order);
                 return true;
             }
+            else
+                throw new NotFilledFieldsEcxeption("Не заполнены все поля");
         }
         catch (Exception ex) {
             ex.printStackTrace();

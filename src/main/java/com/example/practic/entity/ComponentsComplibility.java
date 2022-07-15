@@ -6,16 +6,16 @@ import javax.persistence.*;
 @Table(name = "components_complibility")
 public class ComponentsComplibility {
     @Id
-    @Column(name = "idcc", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_component")
+    @JoinColumn(name = "\"id_component\"")
     private Component idComponent;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_phmodel")
-    private PhoneModel idPhmodel;
+    @JoinColumn(name = "\"id_ph_model\"")
+    private PhoneModel idPhModel;
 
     public Integer getId() {
         return id;
@@ -33,12 +33,12 @@ public class ComponentsComplibility {
         this.idComponent = idComponent;
     }
 
-    public PhoneModel getIdPhmodel() {
-        return idPhmodel;
+    public PhoneModel getIdPhModel() {
+        return idPhModel;
     }
 
-    public void setIdPhmodel(PhoneModel idPhmodel) {
-        this.idPhmodel = idPhmodel;
+    public void setIdPhModel(PhoneModel idPhModel) {
+        this.idPhModel = idPhModel;
     }
 
 }

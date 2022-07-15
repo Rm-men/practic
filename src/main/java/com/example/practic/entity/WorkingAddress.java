@@ -6,10 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "working_addresses")
-public class WorkingAddresses {
+@Table(name = "\"working_addresses\"")
+public class WorkingAddress {
     @Id
     @Column(name = "id", nullable = false)
     private Integer id;
@@ -56,6 +58,14 @@ public class WorkingAddresses {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public static List<String> convetrToString (List<WorkingAddress> lwa){
+        List<String> list = new ArrayList<>();
+        for (WorkingAddress workingAddress: lwa) {
+            list.add(workingAddress.address);
+        }
+        return list;
     }
 
 }

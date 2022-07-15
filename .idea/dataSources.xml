@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="work100024@localhost" uuid="759ab8ce-a169-4de7-9aca-724174ed5fce">
+    <data-source source="LOCAL" name="work100024@localhost" uuid="f30edcff-4f76-49ac-9107-dec90f532ac8">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/work100024</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="practic.main/Hibernate" uuid="b02b10a3-beb4-4694-9d0f-db56bf2328cf">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>Hibernate</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/work100024</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>

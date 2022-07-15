@@ -3,19 +3,19 @@ package com.example.practic.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "on_order_srv")
+@Table(name = "\"on_order_srv\"")
 public class OnOrderSrv {
     @Id
-    @Column(name = "id_srv_onord", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idOrder")
+    @JoinColumn(name = "\"id_order\"")
     private Order idOrder;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idSrv")
-    private Sirvice idSrv;
+    @JoinColumn(name = "\"id_srv\"")
+    private Service idSrv;
 
     public Integer getId() {
         return id;
@@ -29,16 +29,16 @@ public class OnOrderSrv {
         return idOrder;
     }
 
-    public void setIdOrder(Order idOrderForservice) {
-        this.idOrder = idOrderForservice;
+    public void setIdOrder(Order idOrder) {
+        this.idOrder = idOrder;
     }
 
-    public Sirvice getIdSrv() {
+    public Service getIdSrv() {
         return idSrv;
     }
 
-    public void setIdSrv(Sirvice idSrvOnlist) {
-        this.idSrv = idSrvOnlist;
+    public void setIdSrv(Service idSrv) {
+        this.idSrv = idSrv;
     }
 
 }

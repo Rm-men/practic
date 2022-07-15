@@ -12,13 +12,39 @@ public class NewOrderModel {
     public NewOrderModel (){
 
     }
-    public NewOrderModel (Integer id_client, String phonenumber,  String address, Integer idPhoneModel, String descriptionord){
-        this.idClient = id_client;
-        this.phoneNumber = phonenumber;
-        this.address = address;
-        this.idPhoneModel = idPhoneModel;
-        this.descriptionOrd = descriptionord;
+    public NewOrderModel withIdClient(Integer i){
+        this.idClient = i;
+        return this;
     }
+    public NewOrderModel withPhoneNumber(String ph){
+        this.phoneNumber = ph;
+        return this;
+    }
+    public NewOrderModel withAddress(String a){
+        this.address = a;
+        return this;
+    }
+    public NewOrderModel withPhoneModel(Integer pm){
+        this.idPhoneModel = pm;
+        return this;
+    }
+    public NewOrderModel withDescription(String d){
+        this.descriptionOrd = d;
+        return this;
+    }
+    public NewOrderModel build() {
+        NewOrderModel nom = new NewOrderModel();
+        nom.idPhoneModel = idPhoneModel;
+        nom.idClient = idClient;
+        nom.phoneNumber = phoneNumber;
+        nom.address = address;
+        nom.descriptionOrd = descriptionOrd;
+        if (Truly())
+            return nom;
+        else
+            return  null;
+    }
+
     public Integer getIdClient() {
         return idClient;
     }

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name = "guarantee")
 public class Guarantee {
     @Id
-    @Column(name = "id_guarantee", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @Column(name = "period")

@@ -11,13 +11,47 @@ public class RegModel {
     public  RegModel(){
 
     }
-    public  RegModel(String family, String name, String patronymic, String email, String phone, String clpassword){
-        this.family = family;
+
+    public RegModel withName(String n){
         this.name = name;
+        return this;
+    }
+    public RegModel withFamily(String f){
+        this.family = family;
+        return this;
+    }
+    public RegModel withPatronymic(String p){
         this.patronymic = patronymic;
-        this.email = email;
+        return this;
+    }
+    public RegModel withPhone(String ph){
         this.phone = phone;
-        this.password = clpassword;
+        return this;
+    }
+    public RegModel withPassword(String pw){
+        this.password = password;
+        return this;
+    }
+    public RegModel withEmail(String e){
+        this.email = email;
+        return this;
+    }
+    public boolean AllFielldFilled(){
+        return family != null & name != null & email != null & phone != null & password != null;
+    }
+
+    public RegModel build() {
+        RegModel rm = new RegModel();
+        rm.name = name;
+        rm.family = family;
+        rm.patronymic = patronymic;
+        rm.phone = phone;
+        rm.password = password;
+        rm.email = email;
+        if (AllFielldFilled())
+            return rm;
+        else
+            return  null;
     }
 
     public String getEmail() {

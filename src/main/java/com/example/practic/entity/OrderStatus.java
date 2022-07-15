@@ -8,23 +8,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "order_status")
+@Table(name = "\"order_status\"")
 public class OrderStatus {
     @Id
-    @Column(name = "idos", nullable = false, length = 10)
+    @Column(name = "id", nullable = false, length = 10)
     private String id;
 
-    @Column(name = "descriptionos")
+    @Column(name = "description")
     @Type(type = "org.hibernate.type.TextType")
-    private String descriptionos;
+    private String description;
 
-    @Column(name = "logicalSequence", nullable = false)
+    @Column(name = "\"logical_sequence\"", nullable = false)
     private Integer logicalSequence;
 
-    public OrderStatus(String id, String descriptionos,Integer logicalSequence ) {
-        this.id = id;
-        this.descriptionos = descriptionos;
-        this.logicalSequence = logicalSequence;
+    public OrderStatus(String add_0, String заказ_добавлен, int i) {
     }
 
     public OrderStatus() {
@@ -39,12 +36,12 @@ public class OrderStatus {
         this.id = id;
     }
 
-    public String getDescriptionos() {
-        return descriptionos;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescriptionos(String descriptionos) {
-        this.descriptionos = descriptionos;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Integer getLogicalSequence() {

@@ -8,12 +8,12 @@ import javax.persistence.*;
 @Table(name = "phone_model")
 public class PhoneModel {
     @Id
-    @Column(name = "id_phone_model", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "namephone", nullable = false)
+    @Column(name = "name", nullable = false)
     @Type(type = "org.hibernate.type.TextType")
-    private String namephone;
+    private String name;
 
     @Column(name = "specifications", nullable = false)
     @Type(type = "org.hibernate.type.TextType")
@@ -29,7 +29,7 @@ public class PhoneModel {
 
     public PhoneModel(Integer id, String namephone, String specification, Guarantee guarantee, Manufacturer manufacturer) {
         this.id = id;
-        this.namephone = namephone;
+        this.name = namephone;
         this.specifications = specification;
         this.guarantee = guarantee;
         this.manufacturer = manufacturer;
@@ -47,12 +47,12 @@ public class PhoneModel {
         this.id = id;
     }
 
-    public String getNamephone() {
-        return namephone;
+    public String getName() {
+        return name;
     }
 
-    public void setNamephone(String namephone) {
-        this.namephone = namephone;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getSpecifications() {

@@ -12,16 +12,16 @@ public class Employee {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "idContract", length = 8)
+    @Column(name = "\"id_contract\"", length = 8)
     private String idContract;
 
-    @Column(name = "paspSerial", nullable = false, length = 4)
+    @Column(name = "\"pasp_serial\"", nullable = false, length = 4)
     private String paspSerial;
 
-    @Column(name = "paspNumber", nullable = false, length = 6)
+    @Column(name = "\"pasp_number\"", nullable = false, length = 6)
     private String paspNumber;
 
-    @Column(name = "empAddress")
+    @Column(name = "\"emp_address\"")
     @Type(type = "org.hibernate.type.TextType")
     private String empAddress;
 
@@ -31,12 +31,12 @@ public class Employee {
     @Column(name = "phone", nullable = false, length = 11)
     private String phone;
 
-    @Column(name = "dateEmploymentet", nullable = false)
+    @Column(name = "\"date_employmentet\"", nullable = false)
     private LocalDate dateEmploymentet;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "workshop", nullable = false)
-    private WorkingAddresses workshop;
+    private WorkingAddress workshop;
 
     @Column(name = "family", nullable = false, length = 30)
     private String family;
@@ -73,24 +73,24 @@ public class Employee {
         return paspSerial;
     }
 
-    public void setPaspSerial(String paspserial) {
-        this.paspSerial = paspserial;
+    public void setPaspSerial(String paspSerial) {
+        this.paspSerial = paspSerial;
     }
 
     public String getPaspNumber() {
         return paspNumber;
     }
 
-    public void setPaspNumber(String paspnumber) {
-        this.paspNumber = paspnumber;
+    public void setPaspNumber(String paspNumber) {
+        this.paspNumber = paspNumber;
     }
 
     public String getEmpAddress() {
         return empAddress;
     }
 
-    public void setEmpAddress(String empaddress) {
-        this.empAddress = empaddress;
+    public void setEmpAddress(String empAddress) {
+        this.empAddress = empAddress;
     }
 
     public String getType() {
@@ -113,15 +113,15 @@ public class Employee {
         return dateEmploymentet;
     }
 
-    public void setDateEmploymentet(LocalDate dateemploymentet) {
-        this.dateEmploymentet = dateemploymentet;
+    public void setDateEmploymentet(LocalDate dateEmploymentet) {
+        this.dateEmploymentet = dateEmploymentet;
     }
 
-    public WorkingAddresses getWorkshop() {
+    public WorkingAddress getWorkshop() {
         return workshop;
     }
 
-    public void setWorkshop(WorkingAddresses workshop) {
+    public void setWorkshop(WorkingAddress workshop) {
         this.workshop = workshop;
     }
 

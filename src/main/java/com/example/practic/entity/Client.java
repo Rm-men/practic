@@ -2,14 +2,16 @@ package com.example.practic.entity;
 
 import com.example.practic.models.RegModel;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "client")
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_client", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @Column(name = "name", nullable = false, length = 25)
@@ -66,8 +68,8 @@ public class Client {
         return name;
     }
 
-    public void setName(String namecl) {
-        this.name = namecl;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getFamily() {
@@ -106,8 +108,8 @@ public class Client {
         return password;
     }
 
-    public void setPassword(String clpassword) {
-        this.password = clpassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }

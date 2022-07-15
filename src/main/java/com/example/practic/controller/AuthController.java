@@ -2,6 +2,7 @@ package com.example.practic.controller;
 
 import com.example.practic.models.AuthModel;
 import com.example.practic.models.RegAnswerModel;
+import com.example.practic.models.RegAnswerModelBuilder;
 import com.example.practic.models.RegModel;
 import com.example.practic.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class AuthController {
         return clientService.loginUser(authModel);
     }
     @PostMapping(path="/signon",produces = MediaType.APPLICATION_JSON_VALUE)
-    public RegAnswerModel registerUser(@RequestBody @Validated RegModel regModel){ // !!! добавить хэширование
+    public RegAnswerModelBuilder registerUser(@RequestBody @Validated RegModel regModel){ // !!! добавить хэширование
         return clientService.registerUser(regModel);
     }
 }
